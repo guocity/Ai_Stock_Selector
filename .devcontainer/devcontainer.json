@@ -1,0 +1,86 @@
+{
+  "name": "AI Stock Selector Development Container",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.11",
+      "installTools": true,
+      "optimize": true
+    },
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "python.linting.enabled": true,
+        "python.linting.pylintEnabled": true,
+        "python.formatting.provider": "black",
+        "python.testing.pytestEnabled": true,
+        "files.exclude": {
+          "**/__pycache__": true,
+          "**/*.pyc": true,
+          "**/node_modules": true,
+          "**/.git": false,
+          "**/data/*.csv": false,
+          "**/report/*.html": false
+        },
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "workbench.colorTheme": "Default Dark+",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+          "source.organizeImports": "explicit"
+        }
+      },
+      "extensions": [
+        "ms-python.python",
+        "ms-python.black-formatter",
+        "ms-python.pylint",
+        "ms-python.isort",
+        "ms-toolsai.jupyter",
+        "ms-toolsai.datawrangler",
+        "ms-vscode.vscode-json",
+        "redhat.vscode-yaml",
+        "ms-vscode.makefile-tools",
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        "ms-vscode-remote.remote-containers"
+      ]
+    }
+  },
+  "forwardPorts": [
+    8000,
+    8080,
+    5000,
+    3000
+  ],
+  "portsAttributes": {
+    "8000": {
+      "label": "Web Server",
+      "onAutoForward": "notify"
+    },
+    "8080": {
+      "label": "Alternative Web Server",
+      "onAutoForward": "notify"
+    },
+    "5000": {
+      "label": "Flask Development Server",
+      "onAutoForward": "notify"
+    },
+    "3000": {
+      "label": "Node.js Development Server",
+      "onAutoForward": "notify"
+    }
+  },
+  "postCreateCommand": "bash .devcontainer/setup.sh",
+  "remoteUser": "vscode",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
+  "workspaceFolder": "/workspace",
+  "mounts": [
+    "source=${localWorkspaceFolder}/.devcontainer/cache,target=/home/vscode/.cache,type=bind,consistency=cached"
+  ]
+}

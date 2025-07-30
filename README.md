@@ -70,8 +70,11 @@ python main.py
 ```
 
 3. 查看结果：
-- 分析报告将保存在`report`目录下
-- 筛选结果将保存在`data/top_10_stocks.csv`
+- 详细分析报告将保存在`report`目录下
+- 生成三种格式的报告：
+  - `stock_analysis_YYYYMMDD_HHMMSS.txt` - 详细文本报告
+  - `stock_analysis_YYYYMMDD_HHMMSS.html` - 可视化HTML报告  
+  - `stock_summary_YYYYMMDD_HHMMSS.csv` - 数据摘要表格
 
 ## 输出示例
 

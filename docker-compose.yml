@@ -1,0 +1,95 @@
+version: '3.8'
+
+services:
+  # Main application service
+  ai-stock-selector:
+    build:
+      context: .
+      dockerfile: .devcontainer/Dockerfile
+    container_name: ai-stock-selector-app
+    volumes:
+      - .:/workspace
+      - ai-stock-data:/workspace/data
+      - ai-stock-reports:/workspace/report
+      - ai-stock-cache:/home/vscode/.cache
+    ports:
+      - "8888:8888"  # Jupyter Lab
+      - "8000:8000"  # Web server
+      - "5000:5000"  # Flask app
+      - "8501:8501"  # Streamlit
+    environment:
+      - PYTHONPATH=/workspace
+      - TA_INCLUDE_PATH=/usr/local/include
+      - TA_LIBRARY_PATH=/usr/local/lib
+      - LD_LIBRARY_PATH=/usr/local/lib
+    working_dir: /workspace
+    command: tail -f /dev/null  # Keep container running
+    networks:
+      - ai-stock-network
+
+  # Database service (optional)
+  postgres:
+    image: postgres:15-alpine
+    container_name: ai-stock-postgres
+    environment:
+      POSTGRES_DB: ai_stock_db
+      POSTGRES_USER: ai_stock_user
+      POSTGRES_PASSWORD: ai_stock_pass
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - ai-stock-network
+    profiles:
+      - database
+
+  # Redis for caching (optional)
+  redis:
+    image: redis:7-alpine
+    container_name: ai-stock-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - ai-stock-network
+    profiles:
+      - cache
+
+  # Jupyter Lab standalone service
+  jupyter:
+    build:
+      context: .
+      dockerfile: .devcontainer/Dockerfile
+    container_name: ai-stock-jupyter
+    volumes:
+      - .:/workspace
+      - ai-stock-data:/workspace/data
+      - ai-stock-reports:/workspace/report
+    ports:
+      - "8889:8888"
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+    working_dir: /workspace
+    command: jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --token=''
+    networks:
+      - ai-stock-network
+    profiles:
+      - jupyter
+
+volumes:
+  ai-stock-data:
+    driver: local
+  ai-stock-reports:
+    driver: local
+  ai-stock-cache:
+    driver: local
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+
+networks:
+  ai-stock-network:
+    driver: bridge

@@ -1,0 +1,587 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能股票分析报告 - 2025-07-30 14:23:03</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #4CAF50;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .stock-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin: 20px 0;
+            padding: 20px;
+            background: #fafafa;
+        }
+        .stock-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+        .metric-box {
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #4CAF50;
+        }
+        .score {
+            font-size: 2em;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+        .recommendation {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            color: white;
+            font-weight: bold;
+        }
+        .recommend { background-color: #4CAF50; }
+        .observe { background-color: #FF9800; }
+        .caution { background-color: #f44336; }
+        .strong-recommend { background-color: #2196F3; }
+        .not-recommend { background-color: #9E9E9E; }
+        .technical-indicators {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            gap: 10px;
+            margin: 15px 0;
+        }
+        .indicator {
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            border: 1px solid #eee;
+        }
+        .summary {
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 智能股票分析报告</h1>
+            <p>生成时间: 2025-07-30 14:23:03</p>
+            <div style="margin-top: 15px;">
+                <span style="background: #4CAF50; color: white; padding: 8px 16px; border-radius: 20px; margin: 0 10px;">
+                    📊 共分析 5 只股票
+                </span>
+                <span style="background: #2196F3; color: white; padding: 8px 16px; border-radius: 20px; margin: 0 10px;">
+                    🏆 推荐 3 只
+                </span>
+            </div>
+        </div>
+        
+        <div class="summary">
+            <h2>📈 分析概要</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                <div>
+                    <h3>最高评分</h3>
+                    <div style="font-size: 2em; font-weight: bold;">81 分</div>
+                </div>
+                <div>
+                    <h3>平均评分</h3>
+                    <div style="font-size: 2em; font-weight: bold;">72.4 分</div>
+                </div>
+                <div>
+                    <h3>推荐股票</h3>
+                    <div style="font-size: 2em; font-weight: bold;">3 只</div>
+                </div>
+            </div>
+        </div>
+
+        <h2>📋 股票排行榜</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>排名</th>
+                    <th>股票代码</th>
+                    <th>公司名称</th>
+                    <th>评分</th>
+                    <th>建议</th>
+                    <th>最新价</th>
+                    <th>涨跌幅</th>
+                    <th>换手率</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <td><strong>1</strong></td>
+                    <td>000002</td>
+                    <td>万科A</td>
+                    <td><span class="score">81</span></td>
+                    <td><span class="recommendation strong-recommend">强烈推荐</span></td>
+                    <td>32.59</td>
+                    <td style="color: red;">-3.26%</td>
+                    <td>4.62%</td>
+                </tr>
+
+                <tr>
+                    <td><strong>2</strong></td>
+                    <td>000858</td>
+                    <td>五粮液</td>
+                    <td><span class="score">81</span></td>
+                    <td><span class="recommendation strong-recommend">强烈推荐</span></td>
+                    <td>89.63</td>
+                    <td style="color: red;">-2.87%</td>
+                    <td>2.26%</td>
+                </tr>
+
+                <tr>
+                    <td><strong>3</strong></td>
+                    <td>000001</td>
+                    <td>平安银行</td>
+                    <td><span class="score">76</span></td>
+                    <td><span class="recommendation recommend">推荐</span></td>
+                    <td>12.05</td>
+                    <td style="color: red;">-4.23%</td>
+                    <td>0.96%</td>
+                </tr>
+
+                <tr>
+                    <td><strong>4</strong></td>
+                    <td>600000</td>
+                    <td>浦发银行</td>
+                    <td><span class="score">62</span></td>
+                    <td><span class="recommendation observe">观察</span></td>
+                    <td>80.38</td>
+                    <td style="color: red;">-0.91%</td>
+                    <td>2.06%</td>
+                </tr>
+
+                <tr>
+                    <td><strong>5</strong></td>
+                    <td>600036</td>
+                    <td>招商银行</td>
+                    <td><span class="score">62</span></td>
+                    <td><span class="recommendation observe">观察</span></td>
+                    <td>56.44</td>
+                    <td style="color: green;">1.35%</td>
+                    <td>4.91%</td>
+                </tr>
+
+            </tbody>
+        </table>
+        
+        <h2>📊 详细分析报告</h2>
+
+        <div class="stock-card">
+            <div class="stock-header">
+                <h3>【1】万科A (000002)</h3>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span class="score">81 分</span>
+                    <span class="recommendation strong-recommend">强烈推荐</span>
+                </div>
+            </div>
+            
+            <div class="metrics-grid">
+                <div class="metric-box">
+                    <h4>💰 基础行情</h4>
+                    <p><strong>最新价:</strong> 32.59 元</p>
+                    <p><strong>涨跌幅:</strong> <span style="color: red;">-3.26%</span></p>
+                    <p><strong>成交额:</strong> 4926.02 万元</p>
+                    <p><strong>换手率:</strong> 4.62%</p>
+                </div>
+                
+                <div class="metric-box">
+                    <h4>📈 移动平均线</h4>
+                    <div class="technical-indicators">
+                        <div class="indicator">MA5<br><strong>32.13</strong></div>
+                        <div class="indicator">MA10<br><strong>31.59</strong></div>
+                        <div class="indicator">MA20<br><strong>31.33</strong></div>
+                        <div class="indicator">MA60<br><strong>32.33</strong></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="metrics-grid">
+                <div class="metric-box">
+                    <h4>📊 RSI 指标</h4>
+                    <div class="technical-indicators">
+                        <div class="indicator">RSI6<br><strong>58.2</strong></div>
+                        <div class="indicator">RSI12<br><strong>55.6</strong></div>
+                        <div class="indicator">RSI24<br><strong>45.0</strong></div>
+                    </div>
+                </div>
+                
+                <div class="metric-box">
+                    <h4>🎯 MACD 指标</h4>
+                    <p><strong>MACD:</strong> 0.0535</p>
+                    <p><strong>信号线:</strong> -0.1561</p>
+                    <p><strong>柱状图:</strong> 0.2097</p>
+                </div>
+            </div>
+            
+            <div class="metric-box">
+                <h4>🔍 技术面分析</h4>
+                <p>技术分析显示，该股票当前RSI为55.57，处于合理区间。
+MACD指标显示多头趋势，建议持续关注。
+股价高于20日均线，显示上升趋势。
+换手率为4.62%，活跃度适中。</p>
+            </div>
+            
+            <div class="metric-box">
+                <h4>💡 交易建议</h4>
+                <p>基于当前技术指标，建议强烈推荐。
+如果选择投资，建议分批建仓，控制好仓位。
+止损位可设置在29.33元附近。
+目标价位在35.85元-39.11元区间。</p>
+            </div>
+            
+            <div class="metric-box">
+                <h4>⚠️ 风险提示</h4>
+                <p>投资有风险，入市需谨慎。
+该股票当前风险等级为低风险。
+建议密切关注市场变化和公司基本面情况。
+请根据自身投资目标和风险承受能力做出决策。</p>
+            </div>
+        </div>
+
+        <div class="stock-card">
+            <div class="stock-header">
+                <h3>【2】五粮液 (000858)</h3>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span class="score">81 分</span>
+                    <span class="recommendation strong-recommend">强烈推荐</span>
+                </div>
+            </div>
+            
+            <div class="metrics-grid">
+                <div class="metric-box">
+                    <h4>💰 基础行情</h4>
+                    <p><strong>最新价:</strong> 89.63 元</p>
+                    <p><strong>涨跌幅:</strong> <span style="color: red;">-2.87%</span></p>
+                    <p><strong>成交额:</strong> 48775.96 万元</p>
+                    <p><strong>换手率:</strong> 2.26%</p>
+                </div>
+                
+                <div class="metric-box">
+                    <h4>📈 移动平均线</h4>
+                    <div class="technical-indicators">
+                        <div class="indicator">MA5<br><strong>88.15</strong></div>
+                        <div class="indicator">MA10<br><strong>88.36</strong></div>
+                        <div class="indicator">MA20<br><strong>88.41</strong></div>
+                        <div class="indicator">MA60<br><strong>90.28</strong></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="metrics-grid">
+                <div class="metric-box">
+                    <h4>📊 RSI 指标</h4>
+                    <div class="technical-indicators">
+                        <div class="indicator">RSI6<br><strong>55.8</strong></div>
+                        <div class="indicator">RSI12<br><strong>55.2</strong></div>
+                        <div class="indicator">RSI24<br><strong>48.0</strong></div>
+                    </div>
+                </div>
+                
+                <div class="metric-box">
+                    <h4>🎯 MACD 指标</h4>
+                    <p><strong>MACD:</strong> -0.3001</p>
+                    <p><strong>信号线:</strong> -0.4503</p>
+                    <p><strong>柱状图:</strong> 0.1501</p>
+                </div>
+            </div>
+            
+            <div class="metric-box">
+                <h4>🔍 技术面分析</h4>
+                <p>技术分析显示，该股票当前RSI为55.15，处于合理区间。
+MACD指标显示多头趋势，建议持续关注。
+股价高于20日均线，显示上升趋势。
+换手率为2.26%，活跃度适中。</p>
+            </div>
+            
+            <div class="metric-box">
+                <h4>💡 交易建议</h4>
+                <p>基于当前技术指标，建议强烈推荐。
+如果选择投资，建议分批建仓，控制好仓位。
+止损位可设置在80.66元附近。
+目标价位在98.59元-107.55元区间。</p>
+            </div>
+            
+            <div class="metric-box">
+                <h4>⚠️ 风险提示</h4>
+                <p>投资有风险，入市需谨慎。
+该股票当前风险等级为低风险。
+建议密切关注市场变化和公司基本面情况。
+请根据自身投资目标和风险承受能力做出决策。</p>
+            </div>
+        </div>
+
+        <div class="stock-card">
+            <div class="stock-header">
+                <h3>【3】平安银行 (000001)</h3>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span class="score">76 分</span>
+                    <span class="recommendation recommend">推荐</span>
+                </div>
+            </div>
+            
+            <div class="metrics-grid">
+                <div class="metric-box">
+                    <h4>💰 基础行情</h4>
+                    <p><strong>最新价:</strong> 12.05 元</p>
+                    <p><strong>涨跌幅:</strong> <span style="color: red;">-4.23%</span></p>
+                    <p><strong>成交额:</strong> 5819.48 万元</p>
+                    <p><strong>换手率:</strong> 0.96%</p>
+                </div>
+                
+                <div class="metric-box">
+                    <h4>📈 移动平均线</h4>
+                    <div class="technical-indicators">
+                        <div class="indicator">MA5<br><strong>12.19</strong></div>
+                        <div class="indicator">MA10<br><strong>12.07</strong></div>
+                        <div class="indicator">MA20<br><strong>11.97</strong></div>
+                        <div class="indicator">MA60<br><strong>12.26</strong></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="metrics-grid">
+                <div class="metric-box">
+                    <h4>📊 RSI 指标</h4>
+                    <div class="technical-indicators">
+                        <div class="indicator">RSI6<br><strong>56.8</strong></div>
+                        <div class="indicator">RSI12<br><strong>51.1</strong></div>
+                        <div class="indicator">RSI24<br><strong>47.0</strong></div>
+                    </div>
+                </div>
+                
+                <div class="metric-box">
+                    <h4>🎯 MACD 指标</h4>
+                    <p><strong>MACD:</strong> -0.0244</p>
+                    <p><strong>信号线:</strong> -0.0580</p>
+                    <p><strong>柱状图:</strong> 0.0335</p>
+                </div>
+            </div>
+            
+            <div class="metric-box">
+                <h4>🔍 技术面分析</h4>
+                <p>技术分析显示，该股票当前RSI为51.10，处于合理区间。
+MACD指标显示多头趋势，建议持续关注。
+股价高于20日均线，显示上升趋势。
+换手率为0.96%，活跃度较低。</p>
+            </div>
+            
+            <div class="metric-box">
+                <h4>💡 交易建议</h4>
+                <p>基于当前技术指标，建议推荐。
+如果选择投资，建议分批建仓，控制好仓位。
+止损位可设置在10.85元附近。
+目标价位在13.26元-14.46元区间。</p>
+            </div>
+            
+            <div class="metric-box">
+                <h4>⚠️ 风险提示</h4>
+                <p>投资有风险，入市需谨慎。
+该股票当前风险等级为中低风险。
+建议密切关注市场变化和公司基本面情况。
+请根据自身投资目标和风险承受能力做出决策。</p>
+            </div>
+        </div>
+
+        <div class="stock-card">
+            <div class="stock-header">
+                <h3>【4】浦发银行 (600000)</h3>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span class="score">62 分</span>
+                    <span class="recommendation observe">观察</span>
+                </div>
+            </div>
+            
+            <div class="metrics-grid">
+                <div class="metric-box">
+                    <h4>💰 基础行情</h4>
+                    <p><strong>最新价:</strong> 80.38 元</p>
+                    <p><strong>涨跌幅:</strong> <span style="color: red;">-0.91%</span></p>
+                    <p><strong>成交额:</strong> 54699.62 万元</p>
+                    <p><strong>换手率:</strong> 2.06%</p>
+                </div>
+                
+                <div class="metric-box">
+                    <h4>📈 移动平均线</h4>
+                    <div class="technical-indicators">
+                        <div class="indicator">MA5<br><strong>79.86</strong></div>
+                        <div class="indicator">MA10<br><strong>81.03</strong></div>
+                        <div class="indicator">MA20<br><strong>84.43</strong></div>
+                        <div class="indicator">MA60<br><strong>84.67</strong></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="metrics-grid">
+                <div class="metric-box">
+                    <h4>📊 RSI 指标</h4>
+                    <div class="technical-indicators">
+                        <div class="indicator">RSI6<br><strong>32.7</strong></div>
+                        <div class="indicator">RSI12<br><strong>37.0</strong></div>
+                        <div class="indicator">RSI24<br><strong>51.4</strong></div>
+                    </div>
+                </div>
+                
+                <div class="metric-box">
+                    <h4>🎯 MACD 指标</h4>
+                    <p><strong>MACD:</strong> -1.6484</p>
+                    <p><strong>信号线:</strong> -1.1599</p>
+                    <p><strong>柱状图:</strong> -0.4885</p>
+                </div>
+            </div>
+            
+            <div class="metric-box">
+                <h4>🔍 技术面分析</h4>
+                <p>技术分析显示，该股票当前RSI为37.00，处于合理区间。
+MACD指标显示空头趋势，建议谨慎操作。
+股价低于20日均线，显示下降趋势。
+换手率为2.06%，活跃度适中。</p>
+            </div>
+            
+            <div class="metric-box">
+                <h4>💡 交易建议</h4>
+                <p>基于当前技术指标，建议观察。
+如果选择投资，建议分批建仓，控制好仓位。
+止损位可设置在72.34元附近。
+目标价位在88.41元-96.45元区间。</p>
+            </div>
+            
+            <div class="metric-box">
+                <h4>⚠️ 风险提示</h4>
+                <p>投资有风险，入市需谨慎。
+该股票当前风险等级为中等风险。
+建议密切关注市场变化和公司基本面情况。
+请根据自身投资目标和风险承受能力做出决策。</p>
+            </div>
+        </div>
+
+        <div class="stock-card">
+            <div class="stock-header">
+                <h3>【5】招商银行 (600036)</h3>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span class="score">62 分</span>
+                    <span class="recommendation observe">观察</span>
+                </div>
+            </div>
+            
+            <div class="metrics-grid">
+                <div class="metric-box">
+                    <h4>💰 基础行情</h4>
+                    <p><strong>最新价:</strong> 56.44 元</p>
+                    <p><strong>涨跌幅:</strong> <span style="color: green;">1.35%</span></p>
+                    <p><strong>成交额:</strong> 42479.59 万元</p>
+                    <p><strong>换手率:</strong> 4.91%</p>
+                </div>
+                
+                <div class="metric-box">
+                    <h4>📈 移动平均线</h4>
+                    <div class="technical-indicators">
+                        <div class="indicator">MA5<br><strong>57.51</strong></div>
+                        <div class="indicator">MA10<br><strong>57.74</strong></div>
+                        <div class="indicator">MA20<br><strong>60.55</strong></div>
+                        <div class="indicator">MA60<br><strong>62.68</strong></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="metrics-grid">
+                <div class="metric-box">
+                    <h4>📊 RSI 指标</h4>
+                    <div class="technical-indicators">
+                        <div class="indicator">RSI6<br><strong>28.6</strong></div>
+                        <div class="indicator">RSI12<br><strong>35.3</strong></div>
+                        <div class="indicator">RSI24<br><strong>40.0</strong></div>
+                    </div>
+                </div>
+                
+                <div class="metric-box">
+                    <h4>🎯 MACD 指标</h4>
+                    <p><strong>MACD:</strong> -1.5922</p>
+                    <p><strong>信号线:</strong> -1.3532</p>
+                    <p><strong>柱状图:</strong> -0.2390</p>
+                </div>
+            </div>
+            
+            <div class="metric-box">
+                <h4>🔍 技术面分析</h4>
+                <p>技术分析显示，该股票当前RSI为35.31，处于合理区间。
+MACD指标显示空头趋势，建议谨慎操作。
+股价低于20日均线，显示下降趋势。
+换手率为4.91%，活跃度适中。</p>
+            </div>
+            
+            <div class="metric-box">
+                <h4>💡 交易建议</h4>
+                <p>基于当前技术指标，建议观察。
+如果选择投资，建议分批建仓，控制好仓位。
+止损位可设置在50.80元附近。
+目标价位在62.08元-67.73元区间。</p>
+            </div>
+            
+            <div class="metric-box">
+                <h4>⚠️ 风险提示</h4>
+                <p>投资有风险，入市需谨慎。
+该股票当前风险等级为中等风险。
+建议密切关注市场变化和公司基本面情况。
+请根据自身投资目标和风险承受能力做出决策。</p>
+            </div>
+        </div>
+
+        <div style="margin-top: 40px; padding: 20px; background: #f9f9f9; border-radius: 10px; text-align: center;">
+            <h3>⚠️ 免责声明</h3>
+            <p>本报告仅供参考，不构成投资建议。投资者应根据自身情况做出独立判断。</p>
+            <p>投资有风险，入市需谨慎。过往业绩不代表未来表现。</p>
+            <p><small>报告生成时间: 2025-07-30 14:23:03 | 数据来源: A股市场公开数据</small></p>
+        </div>
+    </div>
+</body>
+</html>
