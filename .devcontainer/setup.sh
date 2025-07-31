@@ -7,6 +7,56 @@ set -e
 
 echo "🚀 Setting up AI Stock Selector development environment..."
 
+# Update system packages
+echo "📦 Updating system packages..."
+sudo apt-get update && sudo apt-get install -y \
+    build-essential \
+    wget \
+    tar \
+    curl \
+    git \
+    vim \
+    nano \
+    htop \
+    tree \
+    sqlite3
+
+# Install TA-Lib C library
+echo "📈 Installing TA-Lib C library..."
+cd /tmp
+wget -q http://prdownloads.sourceforge.net/ta-lib/ta-lib-0.4.0-src.tar.gz
+tar -xzf ta-lib-0.4.0-src.tar.gz
+cd ta-lib
+./configure --prefix=/usr/local
+make -j$(nproc)
+sudo make install
+sudo ldconfig
+
+# Create symbolic links for TA-Lib
+sudo ln -sf /usr/local/lib/libta_lib.so.0.0.0 /usr/local/lib/libta_lib.so
+sudo ln -sf /usr/local/lib/libta_lib.so.0.0.0 /usr/local/lib/libta_lib.so.0
+
+# Set TA-Lib environment variables
+echo 'export TA_INCLUDE_PATH=/usr/local/include' >> ~/.bashrc
+echo 'export TA_LIBRARY_PATH=/usr/local/lib' >> ~/.bashrc
+echo 'export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH' >> ~/.bashrc
+
+# Source the environment variables for current session
+export TA_INCLUDE_PATH=/usr/local/include
+export TA_LIBRARY_PATH=/usr/local/lib
+export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+
+# Cleanup
+cd /
+rm -rf /tmp/ta-lib*
+
+# Upgrade pip and install Python packages
+echo "🐍 Installing Python packages..."
+python -m pip install --upgrade pip setuptools wheel
+
+# Install TA-Lib Python wrapper
+pip install TA-Lib
+
 # Create necessary directories
 mkdir -p data report logs .cache
 
@@ -19,12 +69,45 @@ if [ -f "requirements.txt" ]; then
     pip install -r requirements.txt
 fi
 
+if [ -f "requirements_enhanced.txt" ]; then
+    echo "📦 Installing enhanced requirements..."
+    pip install -r requirements_enhanced.txt
+fi
+
+# Create verification script
+echo "🔧 Creating TA-Lib verification script..."
+cat > /usr/local/bin/verify-talib << 'EOF'
+#!/usr/bin/env python3
+# Verify TA-Lib installation in container
+try:
+    import talib
+    import numpy as np
+    
+    # Test data
+    test_data = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], dtype=float)
+    
+    # Test indicators
+    sma = talib.SMA(test_data, timeperiod=5)
+    rsi = talib.RSI(test_data, timeperiod=14)
+    macd, signal, hist = talib.MACD(test_data)
+    
+    print("✅ TA-Lib is working correctly in the container!")
+    print(f"✅ Version: {talib.__version__}")
+    print("✅ All basic indicators tested successfully")
+    
+except Exception as e:
+    print(f"❌ TA-Lib verification failed: {e}")
+    exit(1)
+EOF
+
+sudo chmod +x /usr/local/bin/verify-talib
+
 # Verify TA-Lib installation
 echo "🔍 Verifying TA-Lib installation..."
 if command -v verify-talib &> /dev/null; then
     verify-talib
 else
-    python3 -c "import talib; print('✅ TA-Lib installed successfully')"
+    python3 -c "import talib; print('✅ TA-Lib installed successfully, version:', talib.__version__)"
 fi
 
 # Initialize sample data if needed
