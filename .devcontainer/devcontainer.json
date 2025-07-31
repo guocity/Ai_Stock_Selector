@@ -5,6 +5,8 @@
     "ghcr.io/devcontainers/features/git:1": {},
     "ghcr.io/devcontainers/features/github-cli:1": {}
   },
+  "onCreateCommand": "pip install --upgrade pip setuptools wheel",
+  "postCreateCommand": "bash .devcontainer/setup.sh",
   "customizations": {
     "vscode": {
       "settings": {
@@ -27,13 +29,10 @@
         "ms-python.black-formatter",
         "ms-python.pylint",
         "ms-python.isort",
-        "ms-toolsai.jupyter",
         "GitHub.copilot",
         "GitHub.copilot-chat"
       ]
     }
   },
-  "forwardPorts": [8000, 8080, 5000, 3000],
-  "postCreateCommand": "bash .devcontainer/setup.sh",
   "remoteUser": "vscode"
 }
